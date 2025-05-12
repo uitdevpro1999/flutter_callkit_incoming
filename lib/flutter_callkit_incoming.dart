@@ -61,7 +61,12 @@ class FlutterCallkitIncoming {
   static Future startCall(CallKitParams params) async {
     await _channel.invokeMethod("startCall", params.toJson());
   }
-
+  /// End All Call with no action
+  /// On iOS, using Callkit(create a history into the Phone app).
+  /// On Android, Nothing(only callback event listener).
+  static Future endAllCallsNoAction() async {
+    await _channel.invokeMethod("endAllCallsNoAction");
+  }
   /// Muting an Ongoing call.
   /// On iOS, using Callkit(update the ongoing call ui).
   /// On Android, Nothing(only callback event listener).
