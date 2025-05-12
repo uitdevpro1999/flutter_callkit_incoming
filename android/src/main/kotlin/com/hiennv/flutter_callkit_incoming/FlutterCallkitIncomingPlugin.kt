@@ -140,7 +140,18 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
         }
         removeAllCalls(context)
     }
-
+    public fun endAllCallsNoAction() {
+        val calls = getDataActiveCalls(context)
+        calls.forEach {
+            context?.sendBroadcast(
+                    CallkitIncomingBroadcastReceiver.getIntentEnded(
+                            requireNotNull(context),
+                            it.toBundle()
+                    )
+            )
+        }
+        removeAllCalls(context)
+    }
     public fun sendEventCustom(body: Map<String, Any>) {
         eventHandlers.reapCollection().forEach {
             it.get()?.send(CallkitConstants.ACTION_CALL_CUSTOM, body)
