@@ -256,7 +256,11 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
                     removeAllCalls(context)
                     result.success("OK")
                 }
-
+                "endAllCallsNoAction" -> {
+                    val calls = getDataActiveCalls(context)
+                    removeAllCalls(context)
+                    result.success("OK")
+                }
                 "activeCalls" -> {
                     result.success(getDataActiveCallsForFlutter(context))
                 }
