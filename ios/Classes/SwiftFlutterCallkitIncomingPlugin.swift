@@ -333,10 +333,6 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
         self.isFromPushKit = false
         self.callManager.endCallAlls()
     }
-        @objc public func endAllCallsNoAction() {
-            self.isFromPushKit = false
-            self.callManager.endCallAllsNoAction()
-        }
     public func saveEndCall(_ uuid: String, _ reason: Int) {
         switch reason {
         case 1:
