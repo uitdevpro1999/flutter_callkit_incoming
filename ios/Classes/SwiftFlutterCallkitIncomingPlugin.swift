@@ -228,7 +228,7 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
     
     @objc public func getAcceptedCall() -> Data? {
         NSLog("Call data ids \(String(describing: data?.uuid)) \(String(describing: answerCall?.uuid.uuidString))")
-        if data?.uuid.lowercased() == answerCall?.uuid.uuidString.lowercased() {
+        if (data?.uuid.lowercased() == answerCall?.uuid.uuidString.lowercased() || data?.uuid.lowercased() == outgoingCall?.uuid.uuidString.lowercased()) {
             return data
         }
         return nil
@@ -333,7 +333,10 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
         self.isFromPushKit = false
         self.callManager.endCallAlls()
     }
-    
+        @objc public func endAllCallsNoAction() {
+            self.isFromPushKit = false
+            self.callManager.endCallAllsNoAction()
+        }
     public func saveEndCall(_ uuid: String, _ reason: Int) {
         switch reason {
         case 1:

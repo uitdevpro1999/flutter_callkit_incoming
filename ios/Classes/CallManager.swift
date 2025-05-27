@@ -88,7 +88,15 @@ class CallManager: NSObject {
             self.requestCall(callTransaction, action: "endCallAlls")
         }
     }
-    
+        func endCallAllsNoAction() {
+            let calls = callController.callObserver.calls
+            for call in calls {
+                let endCallAction = CXEndCallAction(call: call.uuid)
+                let callTransaction = CXTransaction()
+                callTransaction.addAction(endCallAction)
+                self.requestCall(callTransaction, action: "endCall")
+            }
+        }
     func activeCalls() -> [[String: Any]] {
         let calls = callController.callObserver.calls
         var json = [[String: Any]]()
