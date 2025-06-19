@@ -560,8 +560,7 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
                 sendEvent(SwiftFlutterCallkitIncomingPlugin.ACTION_CALL_ENDED, self.data?.toJSON())
             }
             action.fail()
-             self.setEnableRejectAction(true)
-             UserDefaults.standard.set(true, forKey: "shouldSendDeclineEvent")
+
             return
         }
         call.endCall()
@@ -582,8 +581,6 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
                 action.fulfill()
             }
         }
-        self.setEnableRejectAction(true)
-        UserDefaults.standard.set(true, forKey: "shouldSendDeclineEvent")
     }
     
     
