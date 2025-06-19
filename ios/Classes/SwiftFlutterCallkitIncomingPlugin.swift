@@ -565,7 +565,7 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
         call.endCall()
         self.callManager.removeCall(call)
         if (self.answerCall == nil && self.outgoingCall == nil) {
-            if self.enableSendCallDeclineEvent {
+            if self.shouldSendDeclineEvent {
                 sendEvent(SwiftFlutterCallkitIncomingPlugin.ACTION_CALL_DECLINE, self.data?.toJSON())
             }
             if let appDelegate = UIApplication.shared.delegate as? CallkitIncomingAppDelegate {
