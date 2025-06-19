@@ -580,7 +580,7 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
                 action.fulfill()
             }
         }
-        self.setEnableRejectAction(true)
+        setEnableRejectAction(true)
     }
     
     
